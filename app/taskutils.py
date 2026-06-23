@@ -52,6 +52,9 @@ def priority_score(priority: str) -> int:
     weights = {"low": 1, "medium": 2, "high": 3}
     return weights.get(priority, 0)
 
+def sort_tasks(tasks: list[dict]) -> list[dict]:
+    return sorted(tasks, key=lambda t: priority_score(t['priority']), reverse=True)
+
 
 # 🧩 Debug/Fix: this function has the classic mutable-default-argument bug.
 # The default list is created ONCE at definition time and shared by every call,
@@ -79,13 +82,14 @@ if __name__ == "__main__":
     shipRelease.complete()
     print(shipRelease)
 
-    
     raw = [
         {"title": "  Deploy ", "priority": "HIGH"},
         {"title": "Docs", "priority": "low"},
         {"title": "Hotfix", "priority": "high"},
     ]
+
     parsed = [parse_task(r) for r in raw]
+
     print("high priority:", high_priority_titles(parsed))
     print("parsed:", parsed)
     print(add_tag("urgent"))   # expected: ['urgent']
