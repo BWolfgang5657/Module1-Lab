@@ -20,6 +20,12 @@ class Task:
     def __repr__(self) -> str:
         return f"Task(title={self.title!r}, priority={self.priority!r}, done={self.done})"
     
+    @classmethod
+    def from_dict(cls, record: dict) -> "Task":
+        data = parse_task(record)
+        return cls(title=data['title'], priority=data['priority'], done=data.get('done', False))
+
+
 class InvalidTaskError(ValueError):
     """Raised when a task is invalid."""
 
@@ -73,6 +79,7 @@ if __name__ == "__main__":
     shipRelease.complete()
     print(shipRelease)
 
+    
     raw = [
         {"title": "  Deploy ", "priority": "HIGH"},
         {"title": "Docs", "priority": "low"},
