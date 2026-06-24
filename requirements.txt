@@ -1,1 +1,13 @@
+coverage==7.14.3
+greenlet==3.5.2
+iniconfig==2.3.0
+packaging==26.2
+pluggy==1.6.0
+psycopg==3.3.4
+psycopg-binary==3.3.4
+Pygments==2.20.0
+pytest==9.1.1
+pytest-cov==7.1.0
 python-dotenv==1.2.2
+SQLAlchemy==2.0.51
+typing_extensions==4.15.0
