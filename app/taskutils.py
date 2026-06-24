@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 class Task:
     def __init__(self, title: str, priority: str = "medium", done: bool = False):
         self.title = title
